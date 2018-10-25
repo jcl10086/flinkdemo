@@ -47,7 +47,7 @@ public class SocketWindowWordCount {
     }
 
     public static void cdata(){
-        Jedis jedis=new Jedis("119.40.64.177",6379);
+        Jedis jedis=new Jedis("app",6379);
         jedis.auth("touchspring");
         jedis.select(0);
 
