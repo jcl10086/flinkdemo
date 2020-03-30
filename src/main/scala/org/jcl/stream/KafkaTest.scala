@@ -23,7 +23,7 @@ object KafkaTest {
     val conf = new FlinkJedisPoolConfig
       .Builder()
       .setHost("app")
-      .setPassword("Touchspring1")
+      .setPassword("test")
       .setPort(6379).setDatabase(0)
       .build
 
