@@ -3,18 +3,16 @@ package org.jcl.stream
 import org.apache.flink.api.common.serialization.SimpleStringSchema
 import org.apache.flink.api.java.utils.ParameterTool
 import org.apache.flink.runtime.state.filesystem.FsStateBackend
-import org.apache.flink.streaming.api.CheckpointingMode
-import org.apache.flink.streaming.api.environment.CheckpointConfig.ExternalizedCheckpointCleanup
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer010
 import org.apache.flink.streaming.connectors.redis.RedisSink
 import org.apache.flink.streaming.connectors.redis.common.config.FlinkJedisPoolConfig
-import org.jcl.util.{CountSum, CountSumTest, MysqlSink, RedisMapperUtils}
+import org.jcl.util.RedisMapperUtils
 
 /**
   * Created by admin on 2018/9/13.
   */
-object KafkaTest {
+object KafkaTestDemo {
 
   def main(args: Array[String]): Unit = {
 
@@ -29,9 +27,9 @@ object KafkaTest {
 
     val env = StreamExecutionEnvironment.getExecutionEnvironment
     //每1秒检测一次的检查点
-//    env.enableCheckpointing(1000)
+    env.enableCheckpointing(1000)
 
-//    env.setStateBackend(new FsStateBackend("file:///hello/checkpoints-data/"))
+    env.setStateBackend(new FsStateBackend("file:///hello/checkpoints-data/"))
 
 //    val config = env.getCheckpointConfig
 
@@ -40,7 +38,7 @@ object KafkaTest {
 //    config.enableExternalizedCheckpoints(ExternalizedCheckpointCleanup.RETAIN_ON_CANCELLATION)
 
 
-//    env.getCheckpointConfig.setCheckpointInterval(1000)
+    env.getCheckpointConfig.setCheckpointInterval(1000)
 
 //    env.getCheckpointConfig.setMaxConcurrentCheckpoints(1)
 
